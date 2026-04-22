@@ -6,6 +6,7 @@ use crate::math::Real;
 pub type DebugColor = [f32; 4];
 
 /// Style used for computing colors when rendering the scene.
+#[cfg_attr(feature = "serde-serialize", derive(Serialize, Deserialize))]
 #[derive(Copy, Clone, Debug, PartialEq)]
 pub struct DebugRenderStyle {
     /// The number of subdivisions used to approximate the curved
