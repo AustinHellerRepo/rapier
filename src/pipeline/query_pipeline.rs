@@ -411,6 +411,7 @@ impl<'a> QueryPipeline<'a> {
 
 bitflags::bitflags! {
     #[derive(Copy, Clone, PartialEq, Eq, Debug, Default)]
+    #[cfg_attr(feature = "serde-serialize", derive(Serialize, Deserialize))]
     /// Flags for excluding whole sets of colliders from a scene query.
     pub struct QueryFilterFlags: u32 {
         /// Exclude from the query any collider attached to a fixed rigid-body and colliders with no rigid-body attached.
