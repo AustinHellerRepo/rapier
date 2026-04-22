@@ -16,7 +16,6 @@ use std::collections::HashMap;
 bitflags::bitflags! {
     /// Flags indicating what part of the physics engine should be rendered
     /// by the debug-renderer.
-    #[cfg_attr(feature = "serde-serialize", derive(Serialize, Deserialize))]
     #[derive(Copy, Clone, PartialEq, Eq, Debug)]
     pub struct DebugRenderMode: u32 {
         /// If this flag is set, the collider shapes will be rendered.
@@ -50,7 +49,6 @@ type InstancesMap = HashMap<TypeId, Vec<Point<Real>>>;
 type InstancesMap = HashMap<TypeId, (Vec<Point<Real>>, Vec<[u32; 2]>)>;
 
 /// Pipeline responsible for rendering the state of the physics engine for debugging purpose.
-#[cfg_attr(feature = "serde-serialize", derive(Serialize, Deserialize))]
 pub struct DebugRenderPipeline {
     #[cfg(feature = "dim2")]
     instances: InstancesMap,

@@ -8,7 +8,6 @@ use crate::prelude::{ColliderHandle, MultibodyJointHandle};
 use na::Scale;
 
 /// The object currently being rendered by the debug-renderer.
-#[cfg_attr(feature = "serde-serialize", derive(Serialize, Deserialize))]
 #[derive(Copy, Clone)]
 pub enum DebugRenderObject<'a> {
     /// A rigid-body is being rendered.
