@@ -100,6 +100,7 @@ impl HitDecomposition {
 }
 
 /// A collision between the character and its environment during its movement.
+#[cfg_attr(feature = "serde-serialize", derive(Serialize, Deserialize))]
 #[derive(Copy, Clone, Debug)]
 pub struct CharacterCollision {
     /// The collider hit by the character.
