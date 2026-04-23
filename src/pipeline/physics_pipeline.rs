@@ -110,6 +110,10 @@ impl PhysicsPipeline {
         events: &dyn EventHandler,
         handle_user_changes: bool,
     ) {
+        crate::profiling_span!(
+            "rapier_detect_collisions",
+        );
+
         self.counters.stages.collision_detection_time.resume();
         self.counters.cd.broad_phase_time.resume();
 
@@ -175,6 +179,10 @@ impl PhysicsPipeline {
         multibody_joints: &mut MultibodyJointSet,
         events: &dyn EventHandler,
     ) {
+        crate::profiling_span!(
+            "rapier_build_islands_and_solve_velocity_constraints",
+        );
+
         self.counters.stages.island_construction_time.resume();
         islands.update_active_set_with_contacts(
             integration_parameters.dt,
@@ -344,6 +352,10 @@ impl PhysicsPipeline {
         ccd_solver: &mut CCDSolver,
         events: &dyn EventHandler,
     ) {
+        crate::profiling_span!(
+            "rapier_run_ccd_motion_clamping",
+        );
+
         self.counters.ccd.toi_computation_time.start();
         // Handle CCD
         let impacts = ccd_solver.predict_impacts_at_next_positions(
@@ -365,6 +377,10 @@ impl PhysicsPipeline {
         colliders: &mut ColliderSet,
         modified_colliders: &mut ModifiedColliders,
     ) {
+        crate::profiling_span!(
+            "rapier_advance_to_final_positions",
+        );
+
         // Set the rigid-bodies and kinematic bodies to their final position.
         for handle in islands.iter_active_bodies() {
             let rb = bodies.index_mut_internal(handle);

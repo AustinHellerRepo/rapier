@@ -60,6 +60,10 @@ impl BroadPhaseBvh {
         events: &mut Vec<BroadPhasePairEvent>,
         strategy: BvhOptimizationStrategy,
     ) {
+        crate::profiling_span!(
+            "rapier_update_with_strategy",
+        );
+
         const CHANGE_DETECTION_ENABLED: bool = true;
 
         self.frame_index = self.frame_index.overflowing_add(1).0;

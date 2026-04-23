@@ -158,6 +158,10 @@ impl IslandManager {
         multibody_joints: &MultibodyJointSet,
         min_island_size: usize,
     ) {
+        crate::profiling_span!(
+            "rapier_update_active_set_with_contacts",
+        );
+
         assert!(
             min_island_size > 0,
             "The minimum island size must be at least 1."

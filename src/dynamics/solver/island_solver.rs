@@ -42,6 +42,10 @@ impl IslandSolver {
         joint_indices: &[JointIndex],
         multibodies: &mut MultibodyJointSet,
     ) {
+        crate::profiling_span!(
+            "rapier_init_and_solve",
+        );
+
         counters.solver.velocity_assembly_time.resume();
         let num_solver_iterations = base_params.num_solver_iterations.get()
             + islands.active_island_additional_solver_iterations(island_id);
