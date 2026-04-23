@@ -139,6 +139,7 @@ pub mod dynamics;
 pub mod geometry;
 pub mod pipeline;
 pub mod utils;
+pub mod profiling;
 
 /// Elementary mathematical entities (vectors, matrices, isometries, etc).
 pub mod math {

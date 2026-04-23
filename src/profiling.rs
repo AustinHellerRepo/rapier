@@ -18,13 +18,37 @@
 #[cfg(feature = "profiling")]
 pub use tracing::info_span;
 
-// Profiling macros — #[macro_export] places them at the crate root
-//
-// The profiling_span! macro supports two forms:
+/// No-op fallback for when profiling is disabled.
+#[cfg(not(feature = "profiling"))]
+pub fn info_span(_name: &str) -> NoopSpan {
+    NoopSpan
+}
+
+/// A no-op span used when profiling is disabled.
+#[cfg(not(feature = "profiling"))]
+pub struct NoopSpan;
+
+#[cfg(not(feature = "profiling"))]
+impl NoopSpan {
+    #[allow(unused_variables)]
+    pub fn entered(self) -> NoopEntered {
+        NoopEntered
+    }
+}
+
+/// A no-op guard used when profiling is disabled.
+#[cfg(not(feature = "profiling"))]
+pub struct NoopEntered;
+
+#[cfg(not(feature = "profiling"))]
+impl Drop for NoopEntered {
+    fn drop(&mut self) {}
+}
+
+// Profiling macro — #[macro_export] places it at the crate root.
+// Always defined; the profiling_span! macro supports two forms:
 //   1. profiling_span!("name")          — simple span with no context
 //   2. profiling_span!("name", type_name = name) — span with a dynamic value
-//
-// When profiling is disabled, both expand to nothing (zero cost).
 #[cfg(feature = "profiling")]
 #[macro_export]
 macro_rules! profiling_span {
