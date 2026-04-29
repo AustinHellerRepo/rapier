@@ -40,6 +40,10 @@ needless_lifetimes = "allow"
 #parry3d = { git = "https://github.com/dimforge/parry", branch = "master" }
 #parry2d-f64 = { git = "https://github.com/dimforge/parry", branch = "master" }
 #parry3d-f64 = { git = "https://github.com/dimforge/parry", branch = "master" }
+parry2d = { git = "https://github.com/AustinHellerRepo/parry", branch = "release-0.26.0-A" }
+parry3d = { git = "https://github.com/AustinHellerRepo/parry", branch = "release-0.26.0-A" }
+parry2d-f64 = { git = "https://github.com/AustinHellerRepo/parry", branch = "release-0.26.0-A" }
+parry3d-f64 = { git = "https://github.com/AustinHellerRepo/parry", branch = "release-0.26.0-A" }
 
 # See https://github.com/EmbarkStudios/puffin/pull/234
 puffin_egui = { git = "https://github.com/tedsteen/puffin.git", rev = "11771ebe00fd257aedbb545df3339ad597b1cc34" }
