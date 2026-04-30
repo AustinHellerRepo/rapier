@@ -97,6 +97,7 @@ impl BroadPhaseBvh {
         removed_colliders: &[ColliderHandle],
         events: &mut Vec<BroadPhasePairEvent>,
     ) {
+        crate::profiling_span!("rapier_broad_phase_update");
         self.frame_index = self.frame_index.overflowing_add(1).0;
 
         // Removals must be handled first, in case another collider in

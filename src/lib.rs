@@ -167,6 +167,7 @@ pub mod data;
 pub mod dynamics;
 pub mod geometry;
 pub mod pipeline;
+pub mod profiling;
 pub mod utils;
 
 /// Elementary mathematical entities (vectors, matrices, isometries, etc).

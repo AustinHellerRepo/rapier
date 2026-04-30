@@ -289,6 +289,8 @@ impl NarrowPhase {
         bodies: &mut RigidBodySet,
         events: &dyn EventHandler,
     ) {
+        crate::profiling_span!("rapier_handle_user_changes");
+
         // TODO: avoid these hash-maps.
         // They are necessary to handle the swap-remove done internally
         // by the contact/intersection graphs when a node is removed.
@@ -711,6 +713,7 @@ impl NarrowPhase {
         hooks: &dyn PhysicsHooks,
         events: &dyn EventHandler,
     ) {
+        crate::profiling_span!("rapier_compute_intersections");
         let nodes = &self.intersection_graph.graph.nodes;
         let query_dispatcher = &*self.query_dispatcher;
 
@@ -817,6 +820,7 @@ impl NarrowPhase {
         hooks: &dyn PhysicsHooks,
         events: &dyn EventHandler,
     ) {
+        crate::profiling_span!("rapier_compute_contacts");
         let query_dispatcher = &*self.query_dispatcher;
         #[cfg(feature = "parallel")]
         let (snd, rcv) = std::sync::mpsc::channel();

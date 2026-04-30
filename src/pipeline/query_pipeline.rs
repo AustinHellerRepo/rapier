@@ -556,6 +556,7 @@ impl<'a> QueryPipeline<'a> {
 }
 
 bitflags::bitflags! {
+    #[cfg_attr(feature = "serde-serialize", derive(Serialize, Deserialize))]
     #[derive(Copy, Clone, PartialEq, Eq, Debug, Default)]
     /// Flags for filtering spatial queries by body type or sensor status.
     ///

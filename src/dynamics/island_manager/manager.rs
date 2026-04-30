@@ -228,6 +228,8 @@ impl IslandManager {
         impulse_joints: &ImpulseJointSet,
         multibody_joints: &MultibodyJointSet,
     ) {
+        crate::profiling_span!("rapier_update_islands");
+
         // 1. Update active rigid-bodies energy.
         // TODO PERF: should this done by the velocity solver after solving the constraints?
         // let t0 = std::time::Instant::now();

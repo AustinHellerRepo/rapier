@@ -53,6 +53,7 @@ serde-serialize = [
 enhanced-determinism = ["simba/libm_force", "parry3d/enhanced-determinism"]
 debug-render = []
 profiler = ["dep:web-time"] # Enables the internal profiler.
+profiling = ["dep:tracing", "dep:tracing-chrome", "parry3d/profiling"] # Enables tracing-based profiling spans.
 
 # Feature used for debugging only.
 debug-disable-legitimate-fe-exceptions = []
@@ -91,6 +92,8 @@ log = "0.4"
 ordered-float = "5"
 thiserror = "2"
 profiling = "1.0"
+tracing = { version = "0.1", optional = true }
+tracing-chrome = { version = "0.7", optional = true }
 static_assertions = "1"
 
 # TODO: should be re-exported from simba
